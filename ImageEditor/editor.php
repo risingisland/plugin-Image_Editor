@@ -203,6 +203,18 @@ $urlPath   = '';
 		checkbox.dispatchEvent(new Event('change'));
 	}
 
+	function gieWaitForCanvasReady(instance, callback, attemptsLeft) {
+		attemptsLeft = (attemptsLeft === undefined) ? 60 : attemptsLeft;
+		var size = instance.getCanvasSize();
+		if ((size.width > 0 && size.height > 0) || attemptsLeft <= 0) {
+			callback();
+			return;
+		}
+		requestAnimationFrame(function () {
+			gieWaitForCanvasReady(instance, callback, attemptsLeft - 1);
+		});
+	}
+
 	function gieInjectFontPicker(instance) {
 		var submenu = document.querySelector('.tui-image-editor-menu-text');
 		if (!submenu) return; // text submenu markup not found - skip quietly
@@ -296,7 +308,7 @@ $urlPath   = '';
 						usageStatistics: false
 					});
 					gieInjectFontPicker(tuiInstance);
-					gieDefaultLockAspectRatio();
+					gieWaitForCanvasReady(tuiInstance, gieDefaultLockAspectRatio);
 				});
 			})
 			.catch(function (err) {
