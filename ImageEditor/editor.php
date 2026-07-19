@@ -91,15 +91,15 @@ $urlPath   = '';
 				$name    = $img['name'];
 				$encName = rawurlencode($name);
 
-				$thumbRel = $subPath . 'thumbsm.' . $name;
+				$thumbRel = $subPath . 'thumbnail.' . $name;
 				if (file_exists(GSTHUMBNAILPATH . $thumbRel)) {
-					$thumbUrl = $SITEURL . 'data/thumbs/' . $subPath . 'thumbsm.' . $encName;
+					$thumbUrl = $SITEURL . 'data/thumbs/' . $subPath . 'thumbnail.' . $encName;
 				} else {
 					$thumbUrl = $SITEURL . 'data/uploads/' . $subPath . $encName;
 				}
 
 				echo '<div class="gie-card">';
-				echo '<div class="gie-card-thumb"><img src="' . $thumbUrl . '" loading="lazy" alt=""></div>';
+				echo '<div class="gie-card-thumb"><img src="' . $thumbUrl . '" loading="lazy" alt="" title="' . htmlspecialchars($name) . '"></div>';
 				echo '<div class="gie-card-body">';
 				echo '<div class="gie-card-name">' . htmlspecialchars($name) . '</div>';
 				echo '<div class="gie-card-meta"><span>' . $img['size'] . '</span><span>' . $img['date'] . '</span></div>';
