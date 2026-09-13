@@ -4,6 +4,8 @@ A [GetSimpleCMS-CE](https://github.com/GetSimpleCMS-CE/GetSimpleCMS-CE) plugin t
 
 Edits are always saved as **new copies**, never overwriting the original file.
 
+<img width="950" alt="Image-Editor" src="https://github.com/user-attachments/assets/6fbdc433-2140-457d-b553-447e0efc03ec" />
+
 ## Features
 
 - Grid browser for `data/uploads`, with folder navigation and thumbnails (reuses GetSimple's own thumbnail conventions, so edited copies show up correctly in the native file browser too)
